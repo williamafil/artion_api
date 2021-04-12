@@ -1,0 +1,25 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  description: MyText
+  bidding_price: 
+  interval: 
+  start_time: 2021-04-13 00:06:32
+  end_time: 2021-04-13 00:06:32
+  is_active: false
+  imgs: 
+  user_id: 
+  genre_id: 
+
+two:
+  title: MyString
+  description: MyText
+  bidding_price: 
+  interval: 
+  start_time: 2021-04-13 00:06:32
+  end_time: 2021-04-13 00:06:32
+  is_active: false
+  imgs: 
+  user_id: 
+  genre_id: 

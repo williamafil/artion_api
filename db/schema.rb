@@ -10,9 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 2021_04_12_160632) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "auctions", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.integer "bidding_price"
+    t.integer "interval"
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.boolean "is_active"
+    t.json "imgs"
+    t.integer "user_id"
+    t.integer "genre_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
 end
