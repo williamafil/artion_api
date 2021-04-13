@@ -25,4 +25,17 @@ class Users::SessionsController < Devise::SessionsController
   # def configure_sign_in_params
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
+
+  private
+
+  def respond_with(resource, _opts = {})
+    render json: {
+      status: {code: 200, message: '登入成功'},
+      data: UserSerializer.new(resource).serializable_hash[:data][:attributes]
+    }
+  end
+  
+  def respond_to_on_destroy
+    head :ok
+  end
 end
