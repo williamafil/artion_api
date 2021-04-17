@@ -17,6 +17,7 @@ Rails.application.routes.draw do
 
       namespace :auth do
         post '/upload_avatar', to: 'users#upload_avatar'
+        resources :users, only: :update
       end
     end
   end  
