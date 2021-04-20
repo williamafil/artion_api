@@ -5,9 +5,30 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+Genre.destroy_all
+Genre.create([
+  {
+    name: '油畫'
+  },
+  {
+    name: '肖像'
+  },
+  {
+    name: '水彩'
+  },
+  {
+    name: '塗鴉'
+  },
+  {
+    name: '雕塑'
+  },
+  {
+    name: '攝影'
+  }
+])
 
 User.destroy_all
-users = User.create([
+User.create([
   { 
     name: '測試員',
     email: 'test@test.com',
@@ -41,7 +62,8 @@ first_auction = Auction.create(
   start_time: 'April 18, 2021',
   end_time: 'April 23, 2021',
   is_active: true,
-  user_id: 2
+  user_id: 2,
+  genre_id: 1
 )
 first_auction.images.attach(
   io: File.open('./public/jordan_casteel/jordan-casteel-jireh.jpeg'),
@@ -67,7 +89,8 @@ second_auction = Auction.create(
   start_time: 'April 19, 2021',
   end_time: 'April 27, 2021',
   is_active: true,
-  user_id: 3
+  user_id: 3,
+  genre_id: 5
 )
 
 second_auction.images.attach(
