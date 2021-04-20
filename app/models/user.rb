@@ -8,6 +8,8 @@ class User < ApplicationRecord
 
   has_one_attached :avatar
 
+  has_many :auctions
+
   def avatar_url
     if self.avatar.attached?
       url_for(self.avatar)

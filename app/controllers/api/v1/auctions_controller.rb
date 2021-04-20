@@ -7,14 +7,36 @@ module Api
         render json:{
                       status: 'SUCCESS',
                       message: 'Loaded auctions',
-                      data: @auctions.map{|item| item.as_json.merge({images: item.images.map{|img| url_for(img)}})}
+                      data: JSON.parse(@auctions.to_json(
+                        methods: ['images_url'],
+                        include: [
+                          user: {only: [:name]},
+                          genre: {only: [:name]}
+                        ])
+                      )
+                      # data: (
+                      #   @auctions.map{|item| item.as_json.merge({images: item.images.map{|img| url_for(img)}})}
+                      # ),
         }, status: :ok
+      end
 
-        # render json:
-        #   @auctions.map {|work| work.as_json.merge({
-        #     images: work.images.map{|img| (url_for(img))}
-        #     })
-        #   }, status: :ok
+      def show
+        @auction = Auction.friendly.find(params[:id])
+
+        render json:{
+                      status: 'SUCCESS',
+                      message: 'Loaded auction',
+                      data: JSON.parse(@auction.to_json(
+                        methods: ['images_url'],
+                        include: [
+                          user: {only: [:name]},
+                          genre: {only: [:name]}
+                        ])
+                      )
+                      # data: (
+                      #   @auctions.map{|item| item.as_json.merge({images: item.images.map{|img| url_for(img)}})}
+                      # ),
+        }, status: :ok
       end
     end
   end

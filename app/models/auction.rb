@@ -6,6 +6,9 @@ class Auction < ApplicationRecord
 
   has_many_attached :images
 
+  belongs_to :user
+  belongs_to :genre
+
   # 原本是input.to_s.parameterize，但是parameterize只支援英文跟數字，所以改用babosa的to_slug
   def normalize_friendly_id(input)
     input.to_s.to_slug.normalize.to_s
@@ -15,25 +18,25 @@ class Auction < ApplicationRecord
     images.length
   end
 
-  # def images_url
-  #   if self.images.attached?
-  #     self.images.each do |image|
-  #       url_for(image)
-  #     end 
-  #   end
-  # end
   def images_url
-    if self.images.attached?
-      url_for(self.images)
+    if images.attached?
+      images.map do |image|
+        url_for(image)
+      end 
     end
   end
 
-  def image_url
-    self.images.each do |image|
-      return image
-      # Rails.application.routes.url_helpers.rails_blob_path(image, only_path: true)
-    end 
-  end
+  # def images_url
+  #   if self.images.attached?
+  #     url_for(self.images)
+  #   end
+  # end
+
+  # def image_url
+  #   self.images.each do |image|
+  #     Rails.application.routes.url_helpers.rails_blob_path(image, only_path: true)
+  #   end 
+  # end
   # def image_url
   #   Rails.application.routes.url_helpers.rails_blob_path(self.images, only_path: true)
   # end

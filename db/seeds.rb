@@ -40,8 +40,8 @@ User.create([
     password: '123456',
   },
   { 
-    name: 'Ning',
-    email: 'nn@nn.com',
+    name: '朱銘',
+    email: 'ming@ming.com',
     password: '123456',
   },
 ])
