@@ -8,7 +8,9 @@ class User < ApplicationRecord
 
   has_one_attached :avatar
 
-  has_many :auctions
+  has_many :bid_details
+  has_many :bid_auctions, through: :bid_details, source: :auction
+  
 
   def avatar_url
     if self.avatar.attached?

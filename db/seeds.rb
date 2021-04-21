@@ -44,6 +44,26 @@ User.create([
     email: 'ming@ming.com',
     password: '123456',
   },
+  { 
+    name: 'Ning Kang',
+    email: 'nn@nn.com',
+    password: '123456',
+  },
+  { 
+    name: '王國材',
+    email: 'wang@wang.com',
+    password: '123456',
+  },
+  { 
+    name: '林佳龍',
+    email: 'lin@lin.com',
+    password: '123456',
+  },
+  { 
+    name: '蔡英文',
+    email: 'tsai@tsai.com',
+    password: '123456',
+  },
 ])
 
 user = User.create(name: 'Will', password: '123456', email: 'will@will.com')
@@ -52,6 +72,14 @@ user.avatar.attach(
   filename: 'boy.png',
   content_type: 'application/png'
 )
+
+user2 = User.create(name: 'Evan Yu', password: '123456', email: 'evan@evan.com')
+user2.avatar.attach(
+  io: File.open('./public/avatars/man.png'),
+  filename: 'man.png',
+  content_type: 'application/png'
+)
+
 
 Auction.destroy_all
 first_auction = Auction.create(
@@ -113,3 +141,38 @@ second_auction.images.attach(
   filename: 'ming_3.jpg',
   content_type: 'application/jpeg'
 )
+
+
+BidDetail.destroy_all
+BidDetail.create([
+  {
+    user_id: 6,
+    auction_id: 1,
+    bid: 3100000
+  },
+  {
+    user_id: 7,
+    auction_id: 1,
+    bid: 3200000
+  },
+  {
+    user_id: 5,
+    auction_id: 1,
+    bid: 3600000
+  },
+  {
+    user_id: 9,
+    auction_id: 2,
+    bid: 7500000
+  },
+  {
+    user_id: 8,
+    auction_id: 2,
+    bid: 7800000
+  },
+  {
+    user_id: 9,
+    auction_id: 2,
+    bid: 8500000
+  },
+])

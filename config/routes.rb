@@ -17,7 +17,12 @@ Rails.application.routes.draw do
 
       namespace :auth do
         post '/upload_avatar', to: 'users#upload_avatar'
+        get '/get_bids', to: 'bid_details#get_bids'
         resources :users, only: :update
+        resources :auctions do
+          get :bid_detail, on: :member
+        end
+        resources :bid_details, only: :create
       end
     end
   end  
