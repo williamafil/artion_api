@@ -10,6 +10,17 @@ module Api
 
         @bid = BidDetail.new(bid_params)
         if @bid.save
+          params = JSON.parse(@bid.to_json(
+              include: [
+                user: {only: [:name]}
+              ]
+            ))
+
+          puts "= = = = = params = = = = = "
+          puts params
+          puts "= = = = = params = = = = = "
+          ActionCable.server.broadcast 'bid_channel', message: params
+
           render json: {
             status: 'SUCCESS',
             message: 'Bid saved',
