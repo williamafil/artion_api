@@ -21,6 +21,9 @@ module Api
 
       def update
         @user = User.find(params[:id])
+        puts "= = = = = = params"
+        puts params
+        puts "= = = = = = = "
         if @user.update(user_params)
           render json: {status: 'SUCCESS', message: '使用者名稱更新成功', data: @user}, status: :ok
         else
@@ -32,7 +35,7 @@ module Api
       private
       
       def user_params
-        params.require(:user).permit(:name)
+        params.require(:user).permit(:name, :is_artist, artist_info_attributes: [:description, :user_id, :email, :name, :_destroy])
       end
 
       def avatar_params
