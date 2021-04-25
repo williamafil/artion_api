@@ -8,9 +8,12 @@ module Api
                       status: 'SUCCESS',
                       message: 'Loaded auctions',
                       data: JSON.parse(@auctions.to_json(
-                        methods: ['images_url'],
+                        methods: ['images_url', 'author_name'],
                         include: [
-                          user: {only: [:name]},
+                          user: {
+                            only: [:name],
+                            methods: [:artist_name]
+                          },
                           genre: {only: [:name]}
                         ])
                       )
@@ -20,6 +23,28 @@ module Api
         }, status: :ok
       end
 
+      def latest
+        @auction = Auction.last
+        render json:{
+                      status: 'SUCCESS',
+                      message: 'Loaded auction',
+                      data: JSON.parse(@auction.to_json(
+                        methods: ['images_url', 'author_name'],
+                        include: [
+                          user: {
+                            only: [:name],
+                            methods: [:artist_name]
+                          },
+                          genre: {only: [:name]}
+                        ])
+                      )
+                      # data: (
+                      #   @auctions.map{|item| item.as_json.merge({images: item.images.map{|img| url_for(img)}})}
+                      # ),
+        }, status: :ok
+      end
+      
+
       def show
         @auction = Auction.friendly.find(params[:id])
 
@@ -27,7 +52,7 @@ module Api
                       status: 'SUCCESS',
                       message: 'Loaded auction',
                       data: JSON.parse(@auction.to_json(
-                        methods: ['images_url'],
+                        methods: ['images_url', 'author_name'],
                         include: [
                           user: {only: [:name]},
                           genre: {only: [:name]}

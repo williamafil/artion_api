@@ -27,6 +27,11 @@ class Auction < ApplicationRecord
     end
   end
 
+  def author_name
+    self.user.artist_info.name
+    # user.name
+  end
+
   # def images_url
   #   if self.images.attached?
   #     url_for(self.images)

@@ -7,7 +7,7 @@ class CreateAuctions < ActiveRecord::Migration[6.0]
       t.integer :interval
       t.datetime :start_time
       t.datetime :end_time
-      t.boolean :is_active
+      t.boolean :is_active, default: true
       t.json :imgs
       t.integer :user_id
       t.integer :genre_id

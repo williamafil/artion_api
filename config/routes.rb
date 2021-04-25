@@ -11,17 +11,21 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
 
-  post 'rails/active_storage/direct_uploads', to: 'direct_uploads#create'
+  # post 'rails/active_storage/direct_uploads', to: 'direct_uploads#create'
   
   namespace :api do
     namespace :v1 do
-      resources :auctions
+      get '/artists', to: 'users#artist_list'
+      resources :auctions do
+        get :latest, on: :collection
+      end
+      resources :genres, only: :index
 
       namespace :auth do
         post '/upload_avatar', to: 'users#upload_avatar'
         get '/get_bids', to: 'bid_details#get_bids'
-        resources :users, only: :update
-        resources :auctions do
+        resources :users, only: :update 
+        resources :auctions, only: :create do
           get :bid_detail, on: :member
         end
         resources :bid_details, only: :create

@@ -18,4 +18,8 @@ class User < ApplicationRecord
       url_for(self.avatar)
     end
   end
+
+  def artist_name
+    self.artist_info.name
+  end
 end
