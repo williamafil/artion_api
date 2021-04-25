@@ -63,6 +63,21 @@ module Api
                       # ),
         }, status: :ok
       end
+
+      def price_range
+        @auctions = Auction.pluck(:bidding_price)
+        max = @auctions.max
+        min = @auctions.min
+        diff = (max - min) / 5
+
+        arr = @auctions.min.step(to: @auctions.max + diff, by: diff).each_cons(2).map { |a, b| a..b }
+
+        render json:{
+          status: 'SUCCESS',
+          message: 'Loaded auctions',
+          data: JSON.parse(arr.to_json())
+        }, status: :ok
+      end
     end
   end
 end

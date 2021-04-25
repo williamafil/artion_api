@@ -15,9 +15,11 @@ Rails.application.routes.draw do
   
   namespace :api do
     namespace :v1 do
+      # 下拉選單 artist list
       get '/artists', to: 'users#artist_list'
       resources :auctions do
         get :latest, on: :collection
+        get :price_range, on: :collection
       end
       resources :genres, only: :index
 

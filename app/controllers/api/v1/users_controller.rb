@@ -7,6 +7,7 @@ module Api
         status: 'SUCCESS',
         message: 'Loaded artists',
         data: JSON.parse(@users.to_json(
+          only: [:id],
           include: [
             artist_info: {
               only: [:name]
