@@ -52,13 +52,52 @@ jordan = User.create(
   password: '123456',
   is_artist: true
 )
-jordan.build_artist_info(name: '喬丹·卡斯蒂爾', email: 'jordan@contact.com', description: '備受矚目的千禧世代新銳藝術家 喬丹卡斯蒂爾（Jordan CASTEEL）風格鮮明而溫柔，她受到黑人男子氣概思想的啟發與薰陶，期待藉由畫筆改變黑人男性在社會中經常遇到的負面形象。以她最親近的人創作來源：家人、朋友、男朋友以及生活當中的不期而遇的人事物，都是藝術家筆下的最佳題材。這次展覽 “喬丹·卡斯蒂爾：回眸（Jordan CASTEEL: return the Gaze）” 共展出了 29件近五年的創作，畫作當中許多的主角是藝術家在紐約哈林區（Harlem），也就是她的成長環境，附近散步時遇到的人。作品中的人物都在凝視的瞬間而情境流動，不論是基於好奇心驅使或者情感回應，都吸引著觀眾頻頻注視與回眸。')
+jordan.build_artist_info(
+  name: '喬丹·卡斯蒂爾',
+  email: 'jordan@contact.com',
+  description: '
+                喬丹·卡斯蒂爾（Jordan Casteel）（生於1989年）是一位美國具像畫家。卡斯蒂爾的風格鮮明而溫柔，她受到黑人男子氣概思想的啟發與薰陶，期待藉由畫筆改變黑人男性在社會中經常遇到的負面形象。以她最親近的人創作來源：家人、朋友、男朋友以及生活當中的不期而遇的人事物，都是藝術家筆下的最佳題材。
+                <br/><br/><br/>
+                <h3>早期生活和教育</h3>
+                Casteel於1989年出生於美國科羅拉多州的丹佛市，來自Lauren Young Casteel和Charles Casteel。 Casteel有一個孿生兄弟和一個哥哥。她以弗農·E·喬丹（Vernon E. Jordan Jr.）的名字命名，後者是祖父惠特尼·楊（Whitney Young）繼任國家城市聯盟（National Urban League）的負責人，並且是親密的家人。她的祖母是瑪格麗特·巴克納·楊（Margaret Buckner Young），她是教育家和兒童讀物的作者。
+                <br/><br/>
+                卡斯蒂爾就讀於藝術的拉馬爾·多德在學校喬治亞大學在科爾托納，意大利在2010年畢業於阿格尼斯斯科特學院在迪凱特，格魯吉亞在2011年以後卡斯蒂爾繼續接受她的師父在美術繪畫和版畫在耶魯大學在2014年。卡斯蒂爾參加了若干組展而在耶魯，包括13藝術家，歷史性的節目由當時的同學策劃達沃爾Erizku。
+                <br/><br/><br/>
+                <h3>主題和風格</h3>
+                卡斯蒂爾（Casteel）的作法探索人性，性，身份和主觀性。卡斯蒂爾（Casteel）幾乎只將黑色的對象塗上油漆，通常根據她為保姆拍攝的照片圍繞保姆周圍的光線使用不同的膚色。主體被塗成各種深淺的棕色，灰色，檸檬綠，海軍藍和淺橙色。
+                <br/><br/>
+                卡斯蒂爾的繪畫方法和對色彩的大膽使用已與畫家雅各布·勞倫斯（Jacob Lawrence），南希·斯佩羅（Nancy Spero）和亨利·馬蒂斯（Henri Matisse）進行了比較。[10] Casteel在她的作品中開發的調色板都是基於對童年時期建立的對色彩和鮮豔度的迷戀關係，並決心突破解釋的界限。她嘗試了自己的色彩對她所畫的環境及其與被攝對象的關係的影響。在整個作品集中，觀看者可以觀察到豐富的色彩，這些色彩代表著她所拍攝對象的膚色。卡斯特爾在繪畫中擺出的姿勢和目光與她與色彩的關係一樣不可或缺，因為她一直在努力推動黑色的對話。[28]卡斯特爾的具像作品也已與紐約藝術家愛麗絲·尼爾（Alice Neel）進行了比較。
+                <br/><br/>
+                卡斯蒂爾的作品來自她自己拍攝的主題照片。糾纏在主題及其周圍環境中的更深層含義和目標。考慮到今天在美國成為黑人的含義，她旨在推動觀眾的思想。約旦在紐約國際藝術雜誌的採訪中說，“這些畫作的目的是揭示我對黑人作為姐妹，女兒，朋友和情人的看法。紐約國際藝術工作室在紐約出版的藝術期刊，每月有20万讀者。這種觀點充滿了同情和愛心。我看到了他們的人性，並希望觀眾以他們的父親，兒子，兄弟，堂兄與他們互動-作為具有各自獨特故事的個人來分享。” 
+
+')
 jordan.save
 jordan.avatar.attach(
   io: File.open('./public/jordan_casteel/20191008_5d9c0c843db0f.jpeg'),
   filename: '20191008_5d9c0c843db0f.jpeg',
   content_type: 'application/jpeg'
 )
+jordan.artist_info.arts.attach(
+  io: File.open('./public/jordan_casteel/within_reach.jpeg'),
+  filename: 'Within Reach',
+  content_type: 'application/jpeg'
+)
+jordan.artist_info.arts.attach(
+  io: File.open('./public/jordan_casteel/FEAT-Jordan-Casteel-Self-Portrait-2012.png'),
+  filename: 'Self-Portrait',
+  content_type: 'application/png'
+)
+jordan.artist_info.arts.attach(
+  io: File.open('./public/jordan_casteel/JORDAN-CASTEEL-Mom-2013.png'),
+  filename: 'Mom',
+  content_type: 'application/png'
+)
+jordan.artist_info.arts.attach(
+  io: File.open('./public/jordan_casteel/786a3cd08330401bca59f190f71372bd.jpeg'),
+  filename: 'The Power of the Lean',
+  content_type: 'application/jpeg'
+)
+
 
 
 ming = User.create(
@@ -83,13 +122,45 @@ banksy_artist = User.create(
   password: '123456',
   is_artist: true
 )
-banksy_artist.build_artist_info(name: 'Banksy', email: 'banksy@contact.com', description: '你可能不知道 Banksy 是誰，但你絕對見過他的作品！塗鴉藝術在歐美來說，大多數的政府是視為「恣意毀壞他人財物罪」，而街頭塗鴉就是 Banksy 的武器，他以黑暗政治幽默與其獨特繪畫技巧相結合聞名，作品常帶有諷刺意味，來對政府提出異議、想替社會發聲。作為全球最神秘的藝術家，他常利用夜晚在大街上作畫，沒有人知道他的真面目，而且因為他的許多塗鴉作品是「違法」，不僅在街道巷弄間的畫作時常很快就被清洗掉，因此實際上沒有多少人看到過原作，更讓他成為了「被全世界通緝的藝術家」，但這卻也讓許多收藏家開始爭相在街道巷弄間找尋 Banksy 的蹤跡，而或許 Banksy 本尊也在人群當中，看著大家欣賞與討論他的畫作！')
+banksy_artist.build_artist_info(
+  name: 'Banksy',
+  email: 'banksy@contact.com',
+  description: 'Banksy，是一位匿名的英國塗鴉藝術家、社會運動活躍份子、電影導演及畫家。也有人猜測瑞士藝術家大師鏡（Maître de Casson）可能是班克西。瑪麗·德·卡森（Maître de Casson）在他的網站上否認了這一點。
+                <br/><br/>
+                他的街頭作品經常帶有諷刺意味，在旁則附有一些顛覆性、玩世不恭的黑色幽默和精警句子；其塗鴉大多運用獨特的模板技術拓印而成。他的作品富有濃厚政治風格，儼如一種以藝術方式表達的社會評論，並已經在世界各地不同城市的街道、牆壁與橋樑出現，甚至成為當地引人入勝的城市面貌。
+                <br/><br/>
+                班克斯的創作生涯源於早年參與布里斯托地下圈子，當中包括了不少藝術家與音樂人的跨界別合作。根據作家和圖像設計師卓斯坦·文高（Tristan Manco）所說，Banksy是出生於1974年並在英國西南部布里斯托市成長的；另外文高又透露他是一名影印機技術員之子，最初是要學習當個肉店屠夫的，後來卻備受1980年代後期在該城興起的塗鴉熱潮影響而深陷其中。有文化評論員指出，班克斯的繪圖風格跟查維亞·普魯（外號「Blek le Rat」）相近，後者從1981年便已經在巴黎開始從事模板印刷的藝術工作，組過龐克樂隊，時至今日仍然活躍於倫敦的塗鴉藝術界。
+                <br/><br/>
+                眾所周知，對於絕大多數政府將塗鴉藝術標籤為「恣意毀壞他人財物罪」之既定政策，Banksy一向以藐視的立場聞名。他習慣在最能接觸社會大眾的表面，例如牆壁等地方展示自己的作品，有時更加不惜親自動手，為其塗鴉圖案建造些物理支撐點。儘管班克斯從來不曾把自己的塗鴉作品或相關照片用作銷售牟利的用途，不過，很多藝術拍賣行都曾經試圖出售他進行街頭藝術的現場，並讓贏出競價的人自行決定對該處塗鴉的處置方式。'
+)
+
 banksy_artist.save
 banksy_artist.avatar.attach(
-  io: File.open('./public/banksy/15144452bijv.jpeg'),
-  filename: '15144452bijv.jpeg',
+  io: File.open('./public/banksy/avatar.jpeg'),
+  filename: 'avatar.jpeg',
   content_type: 'application/jpeg'
 )
+banksy_artist.artist_info.arts.attach(
+  io: File.open('./public/banksy/Season’s  Greetings_1.jpeg'),
+  filename: 'Season’s Greetings',
+  content_type: 'application/jpeg'
+)
+banksy_artist.artist_info.arts.attach(
+  io: File.open('./public/banksy/Season’s  Greetings_2.jpeg'),
+  filename: 'Season’s Greetings',
+  content_type: 'application/jpeg'
+)
+banksy_artist.artist_info.arts.attach(
+  io: File.open('./public/banksy/balloon-girl.jpeg'),
+  filename: 'Balloon Girl',
+  content_type: 'application/jpeg'
+)
+banksy_artist.artist_info.arts.attach(
+  io: File.open('./public/banksy/graffiti_is_a_crime.jpeg'),
+  filename: 'Graffiti Is A Crime',
+  content_type: 'application/jpeg'
+)
+
 
 
 User.create(
