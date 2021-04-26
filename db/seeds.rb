@@ -150,13 +150,13 @@ Auction.destroy_all
 first_auction = Auction.create(
   title: 'Jiréh 以勒',
   description: '備受矚目的千禧世代藝術家 喬丹卡斯蒂爾風格鮮明而溫柔，她受到黑人男子氣概思想的啟發與薰陶，期待藉由畫筆改變黑人男性在社會中經常遇到的負面形象。以她最親近的人創作來源：家人、朋友、男朋友以及生活當中的不期而遇的人事物，都是藝術家筆下的最佳題材。這次展覽 “喬丹·卡斯蒂爾：回眸（Jordan CASTEEL: return the Gaze）” 共展出了 29件近五年的創作，畫作當中許多的主角是藝術家在紐約哈林區（Harlem），也就是她的成長環境，附近散步時遇到的人。作品中的人物都在凝視的瞬間而情境流動，不論是基於好奇心驅使或者情感回應，都吸引著觀眾頻頻注視與回眸。',
-  bidding_price: 3000000,
-  interval: 100000,
+  bidding_price: 300000,
+  interval: 1000,
   start_time: 'April 18, 2021',
   end_time: 'April 23, 2021',
   is_active: true,
   user_id: 2,
-  genre_id: 1
+  genre_id: 4
 )
 first_auction.images.attach(
   io: File.open('./public/jordan_casteel/jordan-casteel-jireh.jpeg'),
@@ -177,8 +177,8 @@ first_auction.images.attach(
 second_auction = Auction.create(
   title: '單鞭下勢',
   description: '單鞭下勢為「太極」系列之一。以樟木為材，順著木材紋理的大刀闊斧之作-「單鞭下勢」，其動勢逼人；快刀中，不只強調了木質的生命，並且透露出精練的身體律動感，充分予人一股連綿不絕之氣。 ',
-  bidding_price: 6800000,
-  interval: 300000,
+  bidding_price: 680000,
+  interval: 30000,
   start_time: 'April 19, 2021',
   end_time: 'April 27, 2021',
   is_active: true,
@@ -210,8 +210,8 @@ second_auction.images.attach(
 third_auction = Auction.create(
   title: 'Game Changer',
   description: '「遊戲改變者」是畫布上的原創作品，去年五月突然掛在南安普敦大學醫院的牆上。畫中描繪了一個玩超級英雄玩具的小男孩，扔掉了蝙蝠俠和蜘蛛俠，取而代之的是選擇穿著紅十字會制服的蒙面護士。畫作下方留下一張便條：「謝謝您所做的一切，希望這幅畫能使這個地方變亮一點，即使它只是黑色與白色的組合。」「遊戲改變者」代表新冠肺炎流行期間，醫護人員代替了蝙蝠俠和蜘蛛俠，成為孩子心中真正的超級英雄。關於這幅神秘醫院畫作的資料，此刻正在中正紀念堂班克斯大展「I LOVE BANKSY」中展出。',
-  bidding_price: 80000000,
-  interval: 5000000,
+  bidding_price: 800000,
+  interval: 5000,
   start_time: 'April 23, 2021',
   end_time: 'May 5, 2021',
   is_active: true,
@@ -243,13 +243,13 @@ third_auction.images.attach(
 fourth_auction = Auction.create(
   title: 'Macintosh Plus',
   description: 'Macintosh Plus計算機是Macintosh系列中的第三個型號，於1986年1月16日推出，比最初的Macintosh早兩年，比Macintosh 512K早一年多，售價為2599美元。作為對512K的改進，它附帶了1 MB的RAM標準（可擴展到4 MB）和外部SCSI外圍總線，其中包括一些較小的改進。',
-  bidding_price: 100000,
+  bidding_price: 200000,
   interval: 5000,
   start_time: 'May 1, 2021',
   end_time: 'May 8, 2021',
   is_active: true,
   user_id: 9,
-  genre_id: 7
+  genre_id: 5
 )
 
 fourth_auction.images.attach(
@@ -287,7 +287,7 @@ fifth_auction = Auction.create(
   end_time: 'May 20, 2021',
   is_active: true,
   user_id: 11,
-  genre_id: 8
+  genre_id: 3
 )
 fifth_auction.images.attach(
   io: File.open('./public/dan-cristian/photo-1598112154392-8125edb6e71d.jpeg'),

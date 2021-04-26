@@ -23,6 +23,7 @@ module Api
         status: 'SUCCESS',
         message: 'Loaded artists',
         data: JSON.parse(@users.to_json(
+          methods: ['avatar_url'],
           include: [:artist_info]
         ))
         }, status: :ok
