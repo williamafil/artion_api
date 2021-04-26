@@ -8,6 +8,9 @@ class User < ApplicationRecord
 
   has_one_attached :avatar
 
+  has_many :likes
+  has_many :follows, through: :likes, source: :auction
+
   has_many :bid_details
   has_many :bid_auctions, through: :bid_details, source: :auction
   has_one :artist_info

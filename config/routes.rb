@@ -28,6 +28,9 @@ Rails.application.routes.draw do
       namespace :auth do
         post '/upload_avatar', to: 'users#upload_avatar'
         get '/get_bids', to: 'bid_details#get_bids'
+        resources :likes, only: [:create, :destroy] do
+          get :like_state, on: :collection
+        end
         resources :users, only: :update 
         resources :auctions, only: :create do
           get :bid_detail, on: :member

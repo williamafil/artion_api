@@ -5,6 +5,10 @@ class Auction < ApplicationRecord
   friendly_id :title, use: :slugged
 
   has_many_attached :images
+
+  has_many :likes
+  has_many :followers, through: :likes, source: :user
+
   has_many :bid_details
   has_many :bidders, through: :bid_details, source: :user
   belongs_to :user

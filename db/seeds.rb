@@ -399,3 +399,14 @@ BidDetail.create([
     bid: 8500000
   },
 ])
+
+
+Like.destroy_all
+Like.create([
+  {user_id: 1, auction_id:1},
+  {user_id: 1, auction_id:3},
+  {user_id: 3, auction_id:1},
+  {user_id: 3, auction_id:2},
+  {user_id: 3, auction_id:4},
+  {user_id: 2, auction_id:2}
+])
