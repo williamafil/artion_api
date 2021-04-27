@@ -25,4 +25,16 @@ class User < ApplicationRecord
   def artist_name
     self.artist_info.name
   end
+
+  def number_of_follows
+    follows.length
+  end
+
+  def number_of_bids
+    bid_details.length
+  end
+
+  def number_of_auctions
+    bid_auctions.length
+  end
 end

@@ -3,6 +3,37 @@ module Api
     class Auth::UsersController < ApplicationController
       before_action :authenticate_user!
 
+      def show
+        @user = User.find(params[:id])
+
+        render json: {
+          status: 'SUCCESS', 
+          message: 'Loaded auction bidding info',
+          data: JSON.parse(
+            @user.to_json(only: [:id, :name],
+              # methods: ['total_likes'],
+              include: [:likes, follows: {
+                methods: ['author_name', 'image_url']
+              }],
+            )
+          )
+        }, status: :ok
+      end
+
+      def user_data
+        @user = User.find(params[:id])
+
+        render json: {
+          status: 'SUCCESS', 
+          message: 'Loaded auction bidding info',
+          data: JSON.parse(
+            @user.to_json(only: [:id, :name],
+              methods: ['number_of_follows', 'number_of_bids', 'number_of_auctions'],
+            )
+          )
+        }, status: :ok
+      end
+
       def upload_avatar
         puts '### upload avatar ###'
         @user = User.find(avatar_params[:user_id])

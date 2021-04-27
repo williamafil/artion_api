@@ -29,7 +29,20 @@ module Api
         end
       end
 
-      def like_state
+      def remove_like
+        puts " ~~~~ REMOVE LIKE ~~~~"
+        user_id = params[:user_id]
+        auction_id = params[:auction_id]
+
+        @like = Like.find_by(user_id: user_id, auction_id: auction_id)
+        if @like.destroy
+          render json: {status: 'SUCCESS', message: 'Remove Like', data: false}, status: :ok
+        else
+          render json: {status: 'SUCCESS', message: 'Fail', data: true}, status: :ok
+        end
+      end
+
+      def state
         user_id = params[:uid]
         auction_id = params[:aid]
         @like = Like.find_by(user_id: user_id, auction_id: auction_id)

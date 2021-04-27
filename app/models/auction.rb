@@ -23,6 +23,12 @@ class Auction < ApplicationRecord
     images.length
   end
 
+  def image_url
+    if images.attached?
+      url_for(images[0])
+    end
+  end
+
   def images_url
     if images.attached?
       images.map do |image|

@@ -29,9 +29,12 @@ Rails.application.routes.draw do
         post '/upload_avatar', to: 'users#upload_avatar'
         get '/get_bids', to: 'bid_details#get_bids'
         resources :likes, only: [:create, :destroy] do
-          get :like_state, on: :collection
+          get :state, on: :collection
+          delete :remove_like, on: :collection
         end
-        resources :users, only: :update 
+        resources :users, only: [:show, :update ] do
+          get :user_data, on: :member
+        end
         resources :auctions, only: :create do
           get :bid_detail, on: :member
         end
