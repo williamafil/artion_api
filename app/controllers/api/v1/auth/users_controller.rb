@@ -12,9 +12,31 @@ module Api
           data: JSON.parse(
             @user.to_json(only: [:id, :name],
               # methods: ['total_likes'],
-              include: [:likes, follows: {
-                methods: ['author_name', 'image_url']
-              }],
+              include: [
+                :likes,
+                bid_details: {
+                  include: [auction: {methods: :author_name}],
+                },
+                follows: {
+                  methods: ['author_name', 'image_url']
+                }
+              ],
+            )
+          )
+        }, status: :ok
+      end
+
+      def artist_auctions
+        @user = User.find(params[:id])
+
+        render json: {
+          status: 'SUCCESS', 
+          message: 'Loaded auction bidding info',
+          data: JSON.parse(
+            @user.to_json(only: [:id, :name],
+              # include: :bid_auctions
+              include: :auctions
+              # methods: ['number_of_follows', 'number_of_bids', 'number_of_auctions'],
             )
           )
         }, status: :ok

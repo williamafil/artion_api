@@ -12,7 +12,9 @@ class User < ApplicationRecord
   has_many :follows, through: :likes, source: :auction
 
   has_many :bid_details
-  has_many :bid_auctions, through: :bid_details, source: :auction
+  has_many :auctions
+  # has_many :bid_auctions, through: :bid_details, source: :auction
+  
   has_one :artist_info
   accepts_nested_attributes_for :artist_info, allow_destroy: true
 
@@ -35,6 +37,7 @@ class User < ApplicationRecord
   end
 
   def number_of_auctions
-    bid_auctions.length
+    # bid_auctions.length
+    auctions.length
   end
 end

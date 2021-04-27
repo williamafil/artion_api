@@ -34,6 +34,7 @@ Rails.application.routes.draw do
         end
         resources :users, only: [:show, :update ] do
           get :user_data, on: :member
+          get :artist_auctions, on: :member
         end
         resources :auctions, only: :create do
           get :bid_detail, on: :member
