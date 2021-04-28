@@ -1,7 +1,8 @@
 class BidChannel < ApplicationCable::Channel
   def subscribed
     # stream_from "some_channel"
-    stream_from "bid_channel"
+    stream_from "bid_channel_#{params[:auction_id]}"
+    # stream_from "bid_channel"
   end
 
   def unsubscribed

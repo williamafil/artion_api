@@ -5,8 +5,13 @@ module Api
 
       def create
         puts "==== create ===="
-        @user_id = params[:user_id]
-        @auction_id = params[:auction_id]
+        # @user_id = params[:user_id]
+        # @auction_id = params[:auction_id]
+
+        puts "^^^^^^^^^^^^^^^^^^^^^"
+        # puts "params[:auction_id]"
+        puts bid_params[:auction_id]
+        puts "^^^^^^^^^^^^^^^^^^^^^"
 
         @bid = BidDetail.new(bid_params)
         if @bid.save
@@ -16,10 +21,13 @@ module Api
               ]
             ))
 
-          puts "= = = = = params = = = = = "
-          puts params
-          puts "= = = = = params = = = = = "
-          ActionCable.server.broadcast 'bid_channel', message: params
+          # puts "= = = = = params = = = = = "
+          # puts params
+          # puts "= = = = = params = = = = = "
+          puts " @ @ @ @ ActionCable.server.broadcast @ @ @ @ "
+          ActionCable.server.broadcast "bid_channel_#{bid_params[:auction_id]}", message: params
+          # ActionCable.server.broadcast "bid_channel_#{@auction_id}", message: params
+          # ActionCable.server.broadcast 'bid_channel', message: params
 
           render json: {
             status: 'SUCCESS',

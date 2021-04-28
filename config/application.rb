@@ -36,7 +36,9 @@ module ArtionApi
     config.i18n.default_locale = "zh-TW"
 
     ActionCable.server.config.disable_request_forgery_protection = true
-    config.action_cable.url = 'wss://localhost:3000/cable'
+    # config.action_cable.url = 'wss://192.168.1.245:3000/cable'
+    config.action_cable.url = 'ws://192.168.1.245:3000/cable'
+    # config.action_cable.url = 'wss://localhost:3000/cable'
 
   end
 end
