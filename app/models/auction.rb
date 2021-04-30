@@ -42,6 +42,10 @@ class Auction < ApplicationRecord
     # user.name
   end
 
+  def toggle_is_active
+    self.toggle(:is_active)
+  end
+
   # def images_url
   #   if self.images.attached?
   #     url_for(self.images)

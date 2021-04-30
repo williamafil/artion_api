@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_26_075441) do
+ActiveRecord::Schema.define(version: 2021_04_29_133004) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -98,6 +98,21 @@ ActiveRecord::Schema.define(version: 2021_04_26_075441) do
   create_table "likes", force: :cascade do |t|
     t.integer "user_id"
     t.integer "auction_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "auction_id"
+    t.string "order_number"
+    t.integer "total_price", default: 0
+    t.string "title"
+    t.string "billing_name"
+    t.string "billing_address"
+    t.string "shipping_name"
+    t.string "shipping_address"
+    t.string "is_paid", default: "f"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

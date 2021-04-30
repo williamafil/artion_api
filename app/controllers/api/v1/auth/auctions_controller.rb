@@ -24,6 +24,9 @@ module Api
         # @auction.images.attach(auction_params[:images])
         # @auction.images.attach(params[:signed_blob_id])
         if @auction.save
+          EnableAuctionJob.set(wait_until: @auction.start_time).perform_later(@auction.id)
+          DisableAuctionJob.set(wait_until: @auction.end_time + 1.second).perform_later(@auction.id)
+          
           render json:{
             status: 'SUCCESS',
             message: 'Loaded auction',

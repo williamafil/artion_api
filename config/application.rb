@@ -35,7 +35,7 @@ module ArtionApi
     config.api_only = true
     config.i18n.default_locale = "zh-TW"
     config.time_zone = "Taipei"
-    config.active_record.default_timezone = :local
+    # config.active_record.default_timezone = :local
 
     ActionCable.server.config.disable_request_forgery_protection = true
     # config.action_cable.url = 'wss://localhost:3000/cable'
