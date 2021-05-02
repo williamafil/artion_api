@@ -45,7 +45,16 @@ namespace :deploy do
   desc 'Restart application'
   task :restart do
     on roles(:app), in: :sequence, wait: 5 do
-      invoke 'puma:restart'
+      execute '~/.rvm/bin/rvm default do bundle exec --keep-file-descriptors puma'
+      # invoke 'puma:restart'
+    end
+  end
+  # 上傳 public底下的東西
+  desc 'Upload public folder'
+  task :upload_public do
+    on roles(:app) do
+      upload! 'public/', "#{shared_path}/public/", recursive: true
+      
     end
   end
   # 上傳 master.key 
@@ -58,6 +67,7 @@ namespace :deploy do
       end
     end
   end
+
 end
 
 namespace :nginx do
