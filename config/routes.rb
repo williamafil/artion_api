@@ -19,9 +19,10 @@ Rails.application.routes.draw do
       get '/artists', to: 'users#artist_list'
       get '/artists_info', to: 'users#artists_info'
       resources :artist_infos, only: :show
-      resources :auctions do
+      resources :auctions, only: [:index, :show] do
         get :latest, on: :collection
         get :price_range, on: :collection
+        get :recent, on: :collection
       end
       resources :genres, only: :index
 
@@ -35,6 +36,7 @@ Rails.application.routes.draw do
         resources :users, only: [:show, :update ] do
           get :user_data, on: :member
           get :artist_auctions, on: :member
+          get :orders, on: :member
         end
         resources :auctions, only: :create do
           get :bid_detail, on: :member

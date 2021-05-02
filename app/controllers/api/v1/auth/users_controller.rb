@@ -26,6 +26,20 @@ module Api
         }, status: :ok
       end
 
+      def orders
+        @user = User.find(params[:id])
+
+        render json: {
+          status: 'SUCCESS', 
+          message: 'Loaded auction bidding info',
+          data: JSON.parse(
+            @user.to_json(only: [:id],
+              include: :orders
+            )
+          )
+        }, status: :ok
+      end
+
       def artist_auctions
         @user = User.find(params[:id])
 
@@ -50,7 +64,7 @@ module Api
           message: 'Loaded auction bidding info',
           data: JSON.parse(
             @user.to_json(only: [:id, :name],
-              methods: ['number_of_follows', 'number_of_bids', 'number_of_auctions'],
+              methods: ['number_of_follows', 'number_of_bids', 'number_of_auctions', 'number_of_unpaid_orders'],
             )
           )
         }, status: :ok

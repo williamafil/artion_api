@@ -8,6 +8,8 @@ class User < ApplicationRecord
 
   has_one_attached :avatar
 
+  has_many :orders
+
   has_many :likes
   has_many :follows, through: :likes, source: :auction
 
@@ -40,4 +42,9 @@ class User < ApplicationRecord
     # bid_auctions.length
     auctions.length
   end
+
+  def number_of_unpaid_orders
+    orders.where(is_paid: false).length
+  end
+
 end
