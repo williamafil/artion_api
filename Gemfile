@@ -30,6 +30,7 @@ gem 'devise-jwt', '~> 0.8.1'
 gem 'jsonapi-serializer', '~> 2.2'
 gem 'friendly_id', '~> 5.4', '>= 5.4.2'
 gem 'babosa', '~> 1.0', '>= 1.0.4'
+gem 'sidekiq', '~> 5.2', '>= 5.2.9'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
