@@ -37,6 +37,7 @@ require "capistrano/rails/migrations"
 require 'capistrano/rails/console'
 require 'capistrano/puma'
 install_plugin Capistrano::Puma
+require 'capistrano/sidekiq'
 # require "capistrano/rbenv"
 # require "capistrano/chruby"
 
