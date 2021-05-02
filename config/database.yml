@@ -80,6 +80,9 @@ test:
 #
 production:
   <<: *default
-  database: artion_api_production
-  username: artion_api
-  password: <%= ENV['ARTION_API_DATABASE_PASSWORD'] %>
+  adapter: postgresql
+  encoding: unicode
+  database: artion_api
+  pool: 5
+  username: <%= Rails.application.credentials.pg[:username] %>
+  password: <%= Rails.application.credentials.pg[:password] %>
