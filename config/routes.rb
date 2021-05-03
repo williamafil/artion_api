@@ -23,6 +23,7 @@ Rails.application.routes.draw do
         get :latest, on: :collection
         get :price_range, on: :collection
         get :recent, on: :collection
+        get :in_progress, on: :collection
       end
       resources :genres, only: :index
 

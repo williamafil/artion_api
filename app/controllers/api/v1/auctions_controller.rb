@@ -44,6 +44,27 @@ module Api
         }, status: :ok
       end
 
+      def in_progress
+        @auction = Auction.where(":date BETWEEN start_time AND end_time", date: DateTime.now).order('id DESC').limit(5)
+        render json:{
+                      status: 'SUCCESS',
+                      message: 'Loaded auction',
+                      data: JSON.parse(@auction.to_json(
+                        methods: ['images_url', 'author_name'],
+                        include: [
+                          user: {
+                            only: [:name],
+                            methods: [:artist_name]
+                          },
+                          genre: {only: [:name]}
+                        ])
+                      )
+                      # data: (
+                      #   @auctions.map{|item| item.as_json.merge({images: item.images.map{|img| url_for(img)}})}
+                      # ),
+        }, status: :ok
+      end
+
       def latest
         # @auction = Auction.last
         # @auction = Auction.where("Date.today >= start_time AND Date.today <= end_time").order("title DESC").limit(5)
