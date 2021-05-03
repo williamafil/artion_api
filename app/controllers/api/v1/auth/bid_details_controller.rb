@@ -23,7 +23,7 @@ module Api
         if @current_bids.length == 0
           puts "bidding_detail 空的"
           if @bid.bid > @auction.bidding_price
-            puts "出價大於起標金額"
+            puts "成功：出價大於起標金額"
 
             if @bid.save
               params = JSON.parse(@bid.to_json(
@@ -63,7 +63,7 @@ module Api
         else
           # 此Auction.bid_details 不為空
           if @bid.bid > @current_bids.last.bid
-            puts "出價大於上次出價"
+            puts "成功：出價大於上次出價"
 
             if @bid.save
               params = JSON.parse(@bid.to_json(
