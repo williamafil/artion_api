@@ -220,7 +220,7 @@ user2.avatar.attach(
 Auction.destroy_all
 first_auction = Auction.create(
   title: 'Jiréh 以勒',
-  description: '備受矚目的千禧世代藝術家 喬丹卡斯蒂爾風格鮮明而溫柔，她受到黑人男子氣概思想的啟發與薰陶，期待藉由畫筆改變黑人男性在社會中經常遇到的負面形象。以她最親近的人創作來源：家人、朋友、男朋友以及生活當中的不期而遇的人事物，都是藝術家筆下的最佳題材。這次展覽 “喬丹·卡斯蒂爾：回眸（Jordan CASTEEL: return the Gaze）” 共展出了 29件近五年的創作，畫作當中許多的主角是藝術家在紐約哈林區（Harlem），也就是她的成長環境，附近散步時遇到的人。作品中的人物都在凝視的瞬間而情境流動，不論是基於好奇心驅使或者情感回應，都吸引著觀眾頻頻注視與回眸。',
+  description: '備受矚目的千禧世代藝術家 喬丹卡斯蒂爾風格鮮明而溫柔，她受到黑人男子氣概思想的啟發與薰陶，期待藉由畫筆改變黑人男性在社會中經常遇到的負面形象。<br/>以她最親近的人創作來源：家人、朋友、男朋友以及生活當中的不期而遇的人事物，都是藝術家筆下的最佳題材。<br/>這次展覽 “喬丹·卡斯蒂爾：回眸（Jordan CASTEEL: return the Gaze）” 共展出了 29件近五年的創作，畫作當中許多的主角是藝術家在紐約哈林區（Harlem），也就是她的成長環境，附近散步時遇到的人。作品中的人物都在凝視的瞬間而情境流動，不論是基於好奇心驅使或者情感回應，都吸引著觀眾頻頻注視與回眸。',
   bidding_price: 300000,
   interval: 1000,
   start_time: 'April 18, 2021',
@@ -313,7 +313,7 @@ third_auction.images.attach(
 
 fourth_auction = Auction.create(
   title: 'Macintosh Plus',
-  description: 'Macintosh Plus計算機是Macintosh系列中的第三個型號，於1986年1月16日推出，比最初的Macintosh早兩年，比Macintosh 512K早一年多，售價為2599美元。作為對512K的改進，它附帶了1 MB的RAM標準（可擴展到4 MB）和外部SCSI外圍總線，其中包括一些較小的改進。',
+  description: 'Macintosh Plus計算機是Macintosh系列中的第三個型號，於1986年1月16日推出，比最初的Macintosh早兩年，比Macintosh 512K早一年多，售價為2599美元。<br/>作為對512K的改進，它附帶了1 MB的RAM標準（可擴展到4 MB）和外部SCSI外圍總線，其中包括一些較小的改進。',
   bidding_price: 200000,
   interval: 5000,
   start_time: 'May 1, 2021',
@@ -351,7 +351,7 @@ fourth_auction.images.attach(
 
 fifth_auction = Auction.create(
   title: 'Chaos',
-  description: 'Chaos 是以直角、銳角、鈍角、直線、曲線等元素所構成.尤以「角」是此作的主角。在 Dan-Cristian 所著的「點線面」一書中提到「直角」表現一種冷靜、抑制的情感.「銳角」表現出一種尖銳的、運動感的特性.「鈍角」表現出一種軟弱的無力感。在此.康丁斯基讓各種角在畫面裡相互影響、彼此衝擊.是為了尋求一種靈活開放的構成表現。而包浩斯時期的圈圈在此畫作中也開始出現。',
+  description: 'Chaos 是以直角、銳角、鈍角、直線、曲線等元素所構成.尤以「角」是此作的主角。<br/><br/>在 Dan-Cristian 所著的「點線面」一書中提到「直角」表現一種冷靜、抑制的情感.「銳角」表現出一種尖銳的、運動感的特性.「鈍角」表現出一種軟弱的無力感。<br/><br/>在此.康丁斯基讓各種角在畫面裡相互影響、彼此衝擊.是為了尋求一種靈活開放的構成表現。而包浩斯時期的圈圈在此畫作中也開始出現。',
   bidding_price: 10000,
   interval: 2000,
   start_time: 'May 12, 2021',
