@@ -42,13 +42,24 @@ namespace :deploy do
     end
   end
   # drop db
-  desc 'drop database'
+  desc 'Drop database'
   task :drop_db do
+    on roles(:app) do
+      within current_path do
+        execute :bundle, :exec, 'rails', 'db:drop', 'RAILS_ENV=production', 'DISABLE_DATABASE_ENVIRONMENT_CHECK=1'
+        # execute :bundle, :exec, 'rails', 'db:create', 'RAILS_ENV=production'
+        # execute :bundle, :exec, 'rails', 'db:migrate', 'RAILS_ENV=production'
+      end
+    end
+  end
+  # migrate DB
+  desc 'Migrate database'
+  task :migrate_db do
     on roles(:app) do
       within current_path do
         # execute :bundle, :exec, 'rails', 'db:drop', 'RAILS_ENV=production', 'DISABLE_DATABASE_ENVIRONMENT_CHECK=1'
         # execute :bundle, :exec, 'rails', 'db:create', 'RAILS_ENV=production'
-        # execute :bundle, :exec, 'rails', 'db:migrate', 'RAILS_ENV=production'
+        execute :bundle, :exec, 'rails', 'db:migrate', 'RAILS_ENV=production'
       end
     end
   end
