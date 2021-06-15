@@ -2,7 +2,6 @@ module Api
   module V1
     class AuctionsController < ApplicationController
       def index
-        puts "======= AUCTIONS#INDEX ======="
         @auctions = Auction.all
         render json:{
                       status: 'SUCCESS',

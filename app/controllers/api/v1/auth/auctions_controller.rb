@@ -4,25 +4,8 @@ module Api
       before_action :authenticate_user!
 
       def create
-        puts "=== AUTH::AUCTION CONTROLLER ==="
-        
         @auction = Auction.new(auction_params)
-        
-        # puts "================================="
-        # puts "params[:images]:"
-        # puts params[:images]
-        # params[:images].map do |img|
-        #   puts "- - - - - "
-        #   puts "img: "
-        #   puts img
-        #   puts "- - - - - "
-        #   @auction.images.attach(img)
-        # end
-        # puts "================================="
-        
-        
-        # @auction.images.attach(auction_params[:images])
-        # @auction.images.attach(params[:signed_blob_id])
+
         if @auction.save
           EnableAuctionJob.set(wait_until: @auction.start_time).perform_later(@auction.id)
           DisableAuctionJob.set(wait_until: @auction.end_time + 1.second).perform_later(@auction.id)
@@ -46,7 +29,6 @@ module Api
       end
 
       def bid_detail
-        puts "==== auctions#bid_detail"
         @auction = Auction.friendly.find(params[:id])
 
         render json: {
@@ -54,7 +36,6 @@ module Api
           message: 'Loaded auction bidding info',
           data: JSON.parse(
             @auction.to_json(only: [:id, :slug],
-              # methods: ['total_likes'],
               include: [
                 bid_details: {
                   only: [:bid, :user_id, :created_at],
@@ -65,7 +46,6 @@ module Api
                       methods: ['avatar_url']
                     }
                   ]
-                  # methods: ['avatar_url']
                 }
               ],
             )
@@ -78,9 +58,6 @@ module Api
       def auction_params
         params.permit(:title, :description, :bidding_price, :interval, :start_time, :end_time, :is_active, :user_id, :genre_id, images: [])
       end
-      # def auction_params
-      #   params.require(:auction).permit(:title, :description, :bidding_price, :interval, :start_time, :end_time, :is_active, :user_id, :genre_id, :images)
-      # end
       
     end
   end

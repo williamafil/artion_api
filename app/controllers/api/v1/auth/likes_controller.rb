@@ -4,7 +4,6 @@ module Api
       before_action :authenticate_user!
 
       def create
-        puts "- - - - Dashboard::LikesController (CREATE) - - - - "
         @like = Like.new(like_params)
         if @like.save
           render json:{
@@ -20,7 +19,6 @@ module Api
       end
 
       def destroy
-        puts " ~~~~ DELETE ~~~~"
         @like = Like.find(params[:id])
         if @like.destroy
           render json: {status: 'SUCCESS', message: 'Remove Like', data: false}, status: :ok
@@ -30,7 +28,6 @@ module Api
       end
 
       def remove_like
-        puts " ~~~~ REMOVE LIKE ~~~~"
         user_id = params[:user_id]
         auction_id = params[:auction_id]
 
@@ -53,15 +50,7 @@ module Api
             message: 'Like not available',
             data: false
           }, status: :ok
-          
-          # render json: {
-          #   status: 'NOTFOUND', message: 'Like not available', data: false
-          # }, status: :ok
         else
-          # render json: {
-          #   status: 'SUCCESS', message: 'Like available', data: true
-          # }, status: :ok
-
           render json:{
             status: 'SUCCESS',
             message: 'Like available',

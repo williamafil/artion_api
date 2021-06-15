@@ -71,7 +71,6 @@ module Api
       end
 
       def upload_avatar
-        puts '### upload avatar ###'
         @user = User.find(avatar_params[:user_id])
         @user.avatar.attach(avatar_params[:avatar])
 
@@ -88,9 +87,6 @@ module Api
 
       def update
         @user = User.find(params[:id])
-        puts "= = = = = = params"
-        puts params
-        puts "= = = = = = = "
         if @user.update(user_params)
           render json: {status: 'SUCCESS', message: '使用者名稱更新成功', data: @user}, status: :ok
         else
