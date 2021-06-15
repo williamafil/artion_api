@@ -11,7 +11,7 @@ set :keep_releases, 5
 set :deploy_to, "/home/#{fetch(:user)}/#{fetch(:application)}"
 
 append :linked_files, "config/master.key"
-append :linked_dirs, "log", "sorage", "tmp/pids", "tmp/cache", "tmp/sockets", "public/system"
+append :linked_dirs, "log", "storage", "tmp/pids", "tmp/cache", "tmp/sockets", "public/system"
 
 # namespace :deploy do
 #   desc 'Restart application'
