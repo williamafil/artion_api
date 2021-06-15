@@ -15,7 +15,6 @@ Rails.application.routes.draw do
   
   namespace :api do
     namespace :v1 do
-      # 下拉選單 artist list
       get '/artists', to: 'users#artist_list'
       get '/artists_info', to: 'users#artists_info'
       resources :artist_infos, only: :show
