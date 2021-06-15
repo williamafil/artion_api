@@ -39,7 +39,6 @@ class User < ApplicationRecord
   end
 
   def number_of_auctions
-    # bid_auctions.length
     auctions.length
   end
 
