@@ -1,24 +1,15 @@
-# README
+# Artion (Backend)
+Artion is an online art auction platform built with Ruby on Rails back-end and Vue.js JavaScript framework, Tailwind CSS framework in front-end.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+[Online Demo - https://artion.netlify.app](https://artion.netlify.app)
+[Github: Artion - Frontend](https://github.com/williamafil/artion_frontend)
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+- DB: Postgresql
+- Rails 6
+- JWT: devise & devise-jwt
+- Background Jobs: ActiveJob
+- Action Cable
+- API Serializer: jsonapi-serializer
+- Deploy Automation: Capistrano
+- Web Server: Nginx
+- Application Server: Puma
